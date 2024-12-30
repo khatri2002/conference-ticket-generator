@@ -1,0 +1,258 @@
+.main {
+  @apply font-inconsolata flex min-h-screen justify-center;
+  background-image: url("../../assets/images/pattern-squiggly-line-top.svg"),
+    url("../../assets/images/pattern-squiggly-line-bottom.svg"),
+    url("../../assets/images/pattern-lines.svg"),
+    url("../../assets/images/background-desktop.png");
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position:
+    100% 9%,
+    bottom left,
+    center,
+    center;
+  background-size: auto, auto, cover, cover;
+
+  .container {
+    @apply my-7;
+    width: 45rem;
+
+    .logo {
+      @apply mx-auto mb-9 w-44;
+    }
+
+    .formContainer {
+      .heroTitle {
+        @apply text-center text-5xl font-bold text-neutral-0;
+      }
+
+      .heroDesc {
+        @apply mt-4 text-center text-lg text-neutral-300;
+      }
+
+      .form {
+        @apply mx-auto mt-9 space-y-5;
+        width: 55%;
+
+        .field {
+          .label {
+            @apply text-neutral-0;
+          }
+
+          &.fileField {
+            .customInput {
+              @apply relative mt-2 flex min-h-24 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-neutral-500 bg-neutral-700/40 transition duration-300 hover:bg-neutral-700/70;
+
+              input {
+                @apply invisible absolute opacity-0;
+              }
+
+              .emptyState {
+                .iconUpload {
+                  @apply mx-auto w-9 rounded-md border border-neutral-500/50 bg-neutral-700;
+                  padding: 3px;
+                }
+
+                .text {
+                  @apply mt-2 block text-center text-sm text-neutral-300;
+                }
+              }
+
+              .fullState {
+                .fileImage {
+                  @apply mx-auto w-10 rounded-md border border-neutral-500 object-cover;
+                }
+
+                .btnContainer {
+                  @apply mt-2 flex gap-x-2;
+
+                  .btn {
+                    @apply pointer-events-auto cursor-pointer rounded bg-neutral-700 px-2 text-xs text-neutral-300 transition-all duration-300 hover:bg-neutral-700/50 hover:underline;
+                  }
+                }
+              }
+
+              &::before {
+                @apply invisible absolute bottom-0 left-1/2 top-0 my-auto -translate-x-1/2 rounded-xl border-2 border-neutral-500 opacity-0 transition duration-300;
+                content: "";
+                height: 113%;
+                width: 103%;
+              }
+
+              &:has(input:focus) {
+                &::before {
+                  @apply visible opacity-100;
+                }
+              }
+
+              &.fullState_ {
+                @apply pointer-events-none hover:bg-neutral-700/40;
+              }
+            }
+
+            .helperText {
+              @apply mt-2 flex items-center gap-x-2 text-xs text-neutral-500 transition duration-300;
+
+              img {
+                @apply transition duration-300;
+              }
+            }
+
+            &.error {
+              .helperText {
+                @apply text-orange-700;
+
+                img {
+                  filter: invert(46%) sepia(37%) saturate(2455%)
+                    hue-rotate(332deg) brightness(98%) contrast(80%);
+                }
+              }
+            }
+          }
+
+          &.textField {
+            .inputWrapper {
+              @apply relative mt-2;
+
+              input {
+                @apply relative w-full cursor-pointer rounded-lg border border-neutral-500 bg-neutral-700/40 px-4 py-3 text-neutral-0 outline-none backdrop-blur-sm transition duration-300 hover:bg-neutral-700/70;
+              }
+
+              .focusOutline {
+                @apply invisible absolute bottom-0 left-1/2 top-0 my-auto -translate-x-1/2 rounded-xl border border-neutral-300 opacity-0 transition duration-300;
+                height: 115%;
+                width: 102%;
+              }
+
+              &:has(input:focus) {
+                .focusOutline {
+                  @apply visible opacity-100;
+                }
+              }
+            }
+
+            .errorText {
+              @apply flex h-0 items-end gap-x-2 overflow-hidden text-xs text-orange-700 transition-all duration-300;
+
+              img {
+                filter: invert(46%) sepia(37%) saturate(2455%)
+                  hue-rotate(332deg) brightness(98%) contrast(80%);
+              }
+            }
+
+            &.error {
+              .errorText {
+                @apply h-6;
+              }
+            }
+          }
+        }
+
+        .btnWrapper {
+          @apply relative rounded-xl;
+
+          .submitBtn {
+            @apply relative w-full overflow-hidden rounded-xl bg-orange-500 py-2 text-lg font-bold;
+
+            span {
+              @apply relative;
+            }
+
+            &:before {
+              content: "";
+              @apply absolute left-0 top-0 h-0 w-full rounded-xl bg-orange-700 transition-all duration-300;
+            }
+
+            &:hover {
+              &::before {
+                height: 90%;
+              }
+            }
+          }
+
+          .focusOutline {
+            @apply invisible absolute bottom-0 left-1/2 top-0 my-auto -translate-x-1/2 rounded-2xl border border-neutral-300 opacity-0 transition duration-300;
+            width: 101.5%;
+            height: 113%;
+          }
+
+          &:focus-within {
+            .focusOutline {
+              @apply visible opacity-100;
+            }
+          }
+        }
+      }
+    }
+
+    .ticketContainer {
+      .heroTitleVarient {
+        @apply text-center text-5xl font-bold text-neutral-0;
+        line-height: 3.4rem;
+
+        .gradient {
+          @apply bg-gradient-to-r from-text-gradient-start to-text-gradient-end bg-clip-text text-transparent;
+        }
+      }
+
+      .heroDescVarient {
+        @apply mx-auto mt-7 text-center text-xl text-neutral-300;
+        width: 63%;
+
+        .active {
+          @apply text-orange-500;
+        }
+      }
+
+      .ticket {
+        @apply relative mx-auto mt-20 flex flex-col justify-between bg-center bg-no-repeat p-7;
+        background-image: url("../../assets/images/pattern-ticket.svg");
+        width: 600px;
+        height: 280px;
+
+        .header {
+          .brandContainer {
+            @apply flex items-center;
+
+            .logoWrapper {
+              @apply w-16;
+            }
+
+            span {
+              @apply text-4xl font-semibold text-neutral-0;
+            }
+          }
+
+          .dateLocation {
+            @apply ml-16 mt-2 block text-neutral-300;
+          }
+        }
+
+        .footer {
+          @apply flex items-center gap-x-3;
+
+          .avatarImage {
+            @apply w-16 rounded-md object-cover;
+          }
+
+          .userInfo {
+            .userName {
+              @apply text-2xl text-neutral-0/90;
+            }
+
+            .github {
+              @apply flex items-center gap-x-1;
+
+              span {
+                @apply text-neutral-300;
+              }
+            }
+          }
+        }
+
+        .idText {
+          @apply absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-2xl text-neutral-500;
+        }
+      }
+    }
+  }
+}
